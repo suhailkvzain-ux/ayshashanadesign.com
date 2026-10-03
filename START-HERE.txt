@@ -1,0 +1,27 @@
+AYSHA SHANA DESIGN — PRODUCTION WEBSITE + PRIVATE CMS
+
+1. Install Node.js 20+.
+2. Extract this ZIP.
+3. Create .env.local from the included example and add your Supabase project URL + publishable key.
+4. In Supabase SQL Editor, run: supabase/admin-cms.sql
+5. Create the admin user in Supabase Authentication > Users.
+6. Copy that user's UUID into:
+   insert into public.admin_users(user_id) values ('YOUR-AUTH-USER-UUID');
+7. Run:
+   npm install
+   npm run dev
+8. Open http://localhost:3000/
+9. Admin: http://localhost:3000/admin
+
+Production:
+- Set the same environment variables in Vercel.
+- Deploy the Next.js project.
+- The public website is /.
+- The private CMS is /admin.
+
+IMPORTANT:
+- Run the SQL migration before first use; it creates the CMS tables, policies, storage buckets and CMS-backed default homepage/settings rows.
+- Never put a Supabase service-role key in NEXT_PUBLIC_* variables.
+- The public site never links to /admin.
+- Draft projects/renders/drawings are filtered out of public pages.
+- The CMS uses Supabase Auth + server-side admin checks + RLS.
